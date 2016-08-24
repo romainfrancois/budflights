@@ -1,0 +1,15 @@
+Package: budflights
+Title: Budapest flights data
+Version: 0.0.0
+Authors@R: c(
+    person("Romain", "Francois", , "romain@r-enthusiasts.com", c("aut", "cre"))
+    )
+Description: Budapest flights data from the Budapest satRday dataviz challenge. 
+License: CC0
+LazyData: true
+Depends:
+    R (>= 3.1.1)
+Suggests:
+    dplyr
+URL: http://github.com/romainfrancois/budflights
+BugReports: https://github.com/romainfrancois/budflights/issues
