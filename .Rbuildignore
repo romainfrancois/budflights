@@ -1,2 +1,4 @@
-gen
+^gen$
 
+^.*\.Rproj$
+^\.Rproj\.user$
