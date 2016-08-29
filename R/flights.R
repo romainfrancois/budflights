@@ -18,6 +18,9 @@
 #' \item{flights}{Number of flights}
 #' \item{scheduled}{number of scheduled flights}
 #' \item{non_scheduled}{number of non scheduled flights}
+#' \item{flights_no_passengers}{number of flights without any passengers}
+#' \item{flights_no_weight}{number of flights carrying no cargo weight}
+#' \item{flights_empty}{number of flights without any passengers and no cargo weight}
 #' }
 #' @examples 
 #'   flights

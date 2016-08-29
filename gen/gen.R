@@ -10,14 +10,16 @@ flights <- data %>%
   `names<-`( casefold(gsub( " ", "_", names(data))) ) %>%
   rename( direction = fligh_direction, type = flight_type ) %>%
   mutate( year = date_year, month = as.numeric(substr(date_year_month, 5, 6)) ) %>%
-  filter( nbr_of_passengers > 0 | cargo_weight > 0  ) %>%
   group_by( year, month, country, city, direction ) %>%
-  summarise( passengers    = sum(nbr_of_passengers), 
-             weight        = sum(cargo_weight), 
-             capacity      = sum(seat_capacity), 
-             flights       = sum(nbr_of_flights), 
-             scheduled     = sum(nbr_of_flights[type == "Scheduled"] ), 
-             non_scheduled = flights - scheduled 
+  summarise( passengers            = sum(nbr_of_passengers), 
+             weight                = sum(cargo_weight), 
+             capacity              = sum(seat_capacity), 
+             flights               = sum(nbr_of_flights), 
+             scheduled             = sum(nbr_of_flights[type == "Scheduled"] ), 
+             non_scheduled         = flights - scheduled, 
+             flights_no_passengers = sum( nbr_of_flights[nbr_of_passengers==0] ), 
+             flights_no_weight     = sum( nbr_of_flights[cargo_weight==0] ), 
+             flights_empty         = sum( nbr_of_flights[nbr_of_passengers==0 & cargo_weight==0 ])
              ) %>%
   arrange( year, month, country, city, direction ) %>%
   ungroup
