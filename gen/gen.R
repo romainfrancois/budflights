@@ -19,7 +19,8 @@ flights <- data %>%
              non_scheduled         = flights - scheduled, 
              flights_no_passengers = sum( nbr_of_flights[nbr_of_passengers==0] ), 
              flights_no_weight     = sum( nbr_of_flights[cargo_weight==0] ), 
-             flights_empty         = sum( nbr_of_flights[nbr_of_passengers==0 & cargo_weight==0 ])
+             flights_empty         = sum( nbr_of_flights[nbr_of_passengers==0 & cargo_weight==0 ]), 
+             filling               = passengers / capacity
              ) %>%
   arrange( year, month, country, city, direction ) %>%
   ungroup
