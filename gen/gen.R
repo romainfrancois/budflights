@@ -28,9 +28,12 @@ save( flights, file = "data/flights.rda")
 # get metadata about cities
 places <- with( distinct( flights, city, country ), paste(city, country, sep = ", ") )
 
+# avoid explicitely loading dismo which breaks select
+geocode <- dismo::geocode
+
 p <- progress_estimated(length(places))
 coords <- tbl_df( bind_rows( lapply(places, function(place){
-  res <- dismo::geocode( place )[1, ] 
+  res <- geocode( place )[1, ] 
   Sys.sleep( .2 ) # otherwise geocode wont let us get all the data
   p$tick()$print()
   res
